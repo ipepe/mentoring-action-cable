@@ -19,10 +19,11 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   protected
-  def self.enum_with_string_values(definitions)
-    definitions.keys.each do |k|
-      definitions[k]= definitions[k].each_with_object(Hash.new) {|ct,h|  h[ct] = ct.to_s}
+  def self.enum_with_string_values(enum_definitions)
+    enum_definitions.keys.each do |enum_attribute_name|
+      enum_definitions[enum_attribute_name]= enum_definitions[enum_attribute_name].
+          each_with_object(Hash.new) { |enum_value, hash| hash[enum_value] = enum_value.to_s }
     end
-    enum(definitions)
+    enum(enum_definitions)
   end
 end
