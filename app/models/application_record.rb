@@ -10,6 +10,10 @@ class ApplicationRecord < ActiveRecord::Base
     I18n.t("activerecord.attributes.#{model_name.i18n_key}.#{enum_name.to_s.pluralize}.#{self.read_attribute(enum_name)}")
   end
   
+  def human_attribute_name(*args)
+    self.class.human_attribute_name(*args)
+  end
+  
   def self.pluck_to_hash(*keys)
     pluck(*keys).map{|pa| Hash[keys.zip(pa)]}
   end
