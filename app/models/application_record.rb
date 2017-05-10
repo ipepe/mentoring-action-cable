@@ -9,6 +9,10 @@ class ApplicationRecord < ActiveRecord::Base
   def human_enum_name(enum_name)
     I18n.t("activerecord.attributes.#{model_name.i18n_key}.#{enum_name.to_s.pluralize}.#{self.read_attribute(enum_name)}")
   end
+  
+  def self.pluck_to_hash(*keys)
+    pluck(*keys).map{|pa| Hash[keys.zip(pa)]}
+  end
 
   protected
   def self.enum_with_string_values(definitions)
