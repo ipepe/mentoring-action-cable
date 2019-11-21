@@ -11,12 +11,5 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require bootstrap-sass-official
 //= require_tree .
-
-jQuery(function($) {
-    $("tr[data-href]").click(function() {
-        window.location = $(this).data('href');
-    });
-});

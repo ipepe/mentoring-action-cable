@@ -1,9 +1,10 @@
 # Change these
-set :repo_url,        'change_me_url_here'
+set :repo_url,        'git@github.com:ipepe/bazapojazdow-pl.git'
 set :user,            'webapp'
+set :application,     'rails-template'
 
 # Don't change these unless you know what you're doing
-set :rbenv_ruby,      '2.3.3'
+set :rbenv_ruby,      '2.5.7'
 set :passenger_restart_with_touch, true
 set :pty,             true
 set :use_sudo,        false
@@ -31,17 +32,6 @@ namespace :rbenv do
 end
 
 namespace :deploy do
-  desc "Make sure local git is in sync with remote."
-  task :check_revision do
-    on roles(:app) do
-      unless `git rev-parse HEAD` == `git rev-parse origin/master`
-        puts "WARNING: HEAD is not the same as origin/master"
-        puts "Run `git push` to sync changes."
-        exit
-      end
-    end
-  end
-
   task :create_non_existant_linked_files do
     on release_roles(fetch(:rbenv_roles)) do
       fetch(:linked_files).each do |file|
@@ -52,9 +42,20 @@ namespace :deploy do
     end
   end
 
+  # cap pnpr_staging deploy:rake[db:seed]
+  desc 'Execute rake task through capristrano'
+  task :rake, :command do |tsk, args|
+    on roles(:db) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, args[:command]
+        end
+      end
+    end
+  end
+
 
   before 'check:linked_files', :create_non_existant_linked_files
-  # before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart

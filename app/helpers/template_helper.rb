@@ -7,7 +7,13 @@ module TemplateHelper
           type: 'text',
           value: resource.read_attribute(attribute)
         }.merge(special_attributes_for(resource, attribute)))
-    ), class: 'form-group')
+  ), class: 'form-group')
+  end
+
+  def li_change_theme_to(theme_name)
+    path = Rails.application.routes.url_helpers.change_theme_path(theme_name: theme_name)
+    link = link_to(theme_name.humanize, path)
+    content_tag(:li, link, class: ('active' if current_theme_stylesheet_name.include?(theme_name)))
   end
 
   def special_attributes_for(resource, attribute)
@@ -28,9 +34,12 @@ module TemplateHelper
     content_tag(:li, my_link_to(path_symbol), li_options)
   end
 
-  def my_link_to(path_symbol)
-    path = Rails.application.routes.url_helpers.public_send(path_symbol)
-    link_to(I18n.t("application.navigation.#{path_symbol}"), path)
+  def my_link_to(path_symbol, *_options)
+    link_to(
+      I18n.t("navigation.#{path_symbol}"),
+      Rails.application.routes.url_helpers.public_send(path_symbol),
+      *_options
+    )
   end
 
   def human_attr(class_symbol, attr_name)

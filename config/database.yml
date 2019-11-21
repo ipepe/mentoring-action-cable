@@ -8,19 +8,15 @@ default: &default
 
 development:
   <<: *default
-  database: rails-app-starting-template_development
+  database: rails-template-dev
 
 test:
   <<: *default
-  database: rails-app-starting-template_test
+  database: rails-template-test
 
 production:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   pool:     50
   timeout:  5000
-  database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
   host:     localhost
   port:     5432
