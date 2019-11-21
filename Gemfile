@@ -16,11 +16,11 @@ gem 'pg', '~> 0.18', '< 0.20.0'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-#gem 'active_hash'
+# gem 'active_hash'
 gem 'dotenv-rails'
-#gem 'kaminari'
+# gem 'kaminari'
 gem 'non-stupid-digest-assets'
-#gem 'route_translator'
+# gem 'route_translator'
 gem 'sidekiq'
 gem 'slim-rails'
 gem 'whenever', require: false
@@ -39,10 +39,10 @@ group :development do
   gem 'bullet'
   gem 'listen', '~> 3.0.5'
   gem 'puma', '~> 3.0'
-  gem 'web-console', '>= 3.3.0'
   gem 'rubocop'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :development, :deploy do

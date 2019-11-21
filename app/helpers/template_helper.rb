@@ -49,7 +49,7 @@ module TemplateHelper
   def human_val(resource, attr_name)
     # TODO: if email? td: a href="mailto:#{@user.email}" = @user.email
     # TODO: if phone_numer? a href="tel: ..."
-    if resource.class.defined_enums.keys.include?(attr_name.to_s)
+    if resource.class.defined_enums.key?(attr_name.to_s)
       resource.human_enum_name(attr_name)
     else
       resource.public_send(attr_name)
