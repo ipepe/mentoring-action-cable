@@ -1,5 +1,5 @@
 # Change these
-set :repo_url,        'git@github.com:ipepe/bazapojazdow-pl.git'
+set :repo_url,        'change_me'
 set :user,            'webapp'
 set :application,     'rails-template'
 
