@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ChatRoomsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @chat_room = chat_rooms(:one)
+    @chat_room = ChatRoom.create!(title: 'test room')
   end
 
   test "should get index" do
