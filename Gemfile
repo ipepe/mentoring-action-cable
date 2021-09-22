@@ -12,7 +12,6 @@ gem "pg", "~> 0.18", "< 0.20.0"
 gem "rails", "< 5.1.0"
 
 gem "dotenv-rails"
-gem 'devise'
 gem "jquery-rails"
 gem "non-stupid-digest-assets"
 gem "react-rails" # https://github.com/reactjs/react-rails

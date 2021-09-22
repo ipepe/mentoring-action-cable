@@ -1,21 +1,21 @@
-h1 Listing chat_rooms
+.row
+  .col-md-12
+    h1 Listing chat_rooms
+.row
+  .col-md-3
+    = link_to 'New Chat room', new_chat_room_path
+.row
+  .col-md-6
+    table.table
+      thead
+        tr
+          th Title
+          th
+          th
+      tbody
+        - @chat_rooms.each do |chat_room|
+          tr
+            td = chat_room.title
+            td = link_to 'Show', chat_room
+            td = link_to 'Edit', edit_chat_room_path(chat_room)
 
-table
-  thead
-    tr
-      th Title
-      th
-      th
-      th
-
-  tbody
-    - @chat_rooms.each do |chat_room|
-      tr
-        td = chat_room.title
-        td = link_to 'Show', chat_room
-        td = link_to 'Edit', edit_chat_room_path(chat_room)
-        td = link_to 'Destroy', chat_room, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Chat room', new_chat_room_path
