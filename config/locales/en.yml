@@ -1,7 +1,7 @@
 en:
   application:
-    name: Rails Template
-    title: Rails Template
+    name: Chat
+    title: Chat
   navigation:
     root_path: Home
   theme: Theme

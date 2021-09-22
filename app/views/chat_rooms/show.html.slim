@@ -1,0 +1,6 @@
+p#notice = notice
+=> link_to 'Edit', edit_chat_room_path(@chat_room)
+'|
+=< link_to 'Back', chat_rooms_path
+
+= react_component('ChatRoom', title: @chat_room.title)

@@ -8,11 +8,11 @@ default: &default
 
 development:
   <<: *default
-  database: rails-template-dev
+  database: ac-workshop-dev
 
 test:
   <<: *default
-  database: rails-template-test
+  database: ac-workshop-test
 
 production:
   <<: *default
