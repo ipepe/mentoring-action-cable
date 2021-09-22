@@ -1,8 +1,8 @@
-require 'test_helper'
+require "test_helper"
 
 class ChatRoomsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @chat_room = ChatRoom.create!(title: 'test room')
+    @chat_room = ChatRoom.create!(title: "test room")
   end
 
   test "should get index" do
@@ -16,7 +16,7 @@ class ChatRoomsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create chat_room" do
-    assert_difference('ChatRoom.count') do
+    assert_difference("ChatRoom.count") do
       post chat_rooms_url, params: { chat_room: { title: @chat_room.title } }
     end
 
@@ -39,7 +39,7 @@ class ChatRoomsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy chat_room" do
-    assert_difference('ChatRoom.count', -1) do
+    assert_difference("ChatRoom.count", -1) do
       delete chat_room_url(@chat_room)
     end
 

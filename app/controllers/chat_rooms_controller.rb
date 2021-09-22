@@ -1,5 +1,5 @@
 class ChatRoomsController < ApplicationController
-  before_action :set_chat_room, only: [:show, :edit, :update, :destroy]
+  before_action :set_chat_room, only: %i[show edit update destroy]
 
   # GET /chat_rooms
   def index
@@ -7,8 +7,7 @@ class ChatRoomsController < ApplicationController
   end
 
   # GET /chat_rooms/1
-  def show
-  end
+  def show; end
 
   # GET /chat_rooms/new
   def new
@@ -16,15 +15,14 @@ class ChatRoomsController < ApplicationController
   end
 
   # GET /chat_rooms/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /chat_rooms
   def create
     @chat_room = ChatRoom.new(chat_room_params)
 
     if @chat_room.save
-      redirect_to @chat_room, notice: 'Chat room was successfully created.'
+      redirect_to @chat_room, notice: "Chat room was successfully created."
     else
       render :new
     end
@@ -33,7 +31,7 @@ class ChatRoomsController < ApplicationController
   # PATCH/PUT /chat_rooms/1
   def update
     if @chat_room.update(chat_room_params)
-      redirect_to @chat_room, notice: 'Chat room was successfully updated.'
+      redirect_to @chat_room, notice: "Chat room was successfully updated."
     else
       render :edit
     end
@@ -42,17 +40,18 @@ class ChatRoomsController < ApplicationController
   # DELETE /chat_rooms/1
   def destroy
     @chat_room.destroy
-    redirect_to chat_rooms_url, notice: 'Chat room was successfully destroyed.'
+    redirect_to chat_rooms_url, notice: "Chat room was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_chat_room
-      @chat_room = ChatRoom.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def chat_room_params
-      params.require(:chat_room).permit(:title)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_chat_room
+    @chat_room = ChatRoom.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def chat_room_params
+    params.require(:chat_room).permit(:title)
+  end
 end
