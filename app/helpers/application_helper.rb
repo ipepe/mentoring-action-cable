@@ -1,10 +1,6 @@
 module ApplicationHelper
   def current_theme_stylesheet_name
-    if cookies.permanent[:theme_name]&.in?(Rails.application.theme_names.map(&:to_s))
-      "themes/#{cookies.permanent[:theme_name]}"
-    else
-      "themes/yeti"
-    end
+    "themes/yeti"
   end
 
   def page_title

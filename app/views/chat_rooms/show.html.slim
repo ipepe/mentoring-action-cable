@@ -3,4 +3,4 @@ p#notice = notice
 '|
 =< link_to 'Back', chat_rooms_path
 
-= react_component('ChatRoom', title: @chat_room.title)
+= react_component('ChatRoom', title: @chat_room.title, id: @chat_room.id, messages: @chat_room.messages.last(10).to_json )

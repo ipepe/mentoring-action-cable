@@ -30,6 +30,8 @@ module AcWorkshop
     config.generators.test_framework(:test_unit, fixture: false)
     config.generators.template_engine :slim
 
+    config.action_cable.url = '/cable'
+
     def theme_names
       @theme_names ||= %w(
         amelia
