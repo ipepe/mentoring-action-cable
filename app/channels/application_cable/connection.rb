@@ -1,16 +1,12 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    identified_by :user_id
+    identified_by :chat_room_id, :user_name
 
     # def connect
-    #   (self.user_id = fetch_user&.id) ||
+    #   self.chat_room_id = env['CHAT_ROOM_ID']
+    #   if ChatRoom.find_by(id: self.chat_room_id).blank?
     #     reject_unauthorized_connection
-    # end
-    #
-    # protected
-    #
-    # def fetch_user
-    #   User.find_by(id: cookies.signed['user.id']) || env['warden'].user
+    #   end
     # end
   end
 end
