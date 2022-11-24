@@ -3,26 +3,9 @@ class ChatRoom extends React.Component {
         this.user_name = prompt('What is Your user name?')
         this.cable = ActionCable.createConsumer(); //connection
 
-        this.cable.subscriptions.create(
-            { channel: 'ChatRoomChannel',
-                chat_room_id: this.props.id,
-                user_name: this.user_name
-            },
-            {
-                received: (message) => {
-                    console.log("[ActionCable][received]", message);
-                    // TODO: append message to messagesBox
-                }
-            }
-        );
+        alert('Chat room id: ' + this.props.id)
+        alert('User name: ' + this.user_name)
 
-    }
-    ajaxPostMessage(messageFromInput){
-        $.post('/messages', {
-            from: this.user_name,
-            body: messageFromInput,
-            chat_room_id: this.props.id
-        })
     }
     render() {
         return <div>
